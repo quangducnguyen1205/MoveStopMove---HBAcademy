@@ -10,13 +10,12 @@ public class Boomerang : Weapon
             float distanceToOwner = Vector3.Distance(owner.transform.position, transform.position);
             if (distanceToOwner > owner.attackRange){
                 isReturn = true;
-                //rb.velocity = -rb.velocity; // Đảo ngược vận tốc để boomerang quay lại
             }
         }
         if (isReturn){
             SetDirection((owner.transform.position - transform.position).normalized);
             rb.velocity = attackDirection * attackSpped;
-            if (Vector3.Distance(owner.transform.position, transform.position) < 0.01f){
+            if (Vector3.Distance(owner.transform.position, transform.position) < 0.1f){
                 isReturn = false;
                 OnDespawn();
             }
@@ -33,7 +32,7 @@ public class Boomerang : Weapon
         if (!isShoot){
             return;
         }
-        Character character = other.GetComponent<Character>();
+        Character character = Cache.GetCharacter(other);
         if (character != null && character != owner){
             character.OnDeath(owner);
 

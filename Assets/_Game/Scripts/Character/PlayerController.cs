@@ -74,7 +74,7 @@ public class PlayerController : Character
                 botTarget.SetActiveCircleTarget(true);
             }
         }
-        //AudioManager.Instance.PlayAttackSound();
+        AudioManager.Instance.PlayAttackSound();
     }
     public void ChangeWeapon(WeaponType weaponType){
         if (currentWeapon != null)

@@ -6,6 +6,7 @@ using UnityEngine.AI;
 public class BotController : Character
 {
     [SerializeField] private GameObject circleTarget;
+    [SerializeField] private float scaleCamera;
     private Vector3 destination;
     public NavMeshAgent agent;
     public bool IsDestination => Vector3.Distance(destination, transform.position) < 0.1f;
@@ -55,6 +56,10 @@ public class BotController : Character
             // Tăng số kim cương khi player tiêu diệt bot
             PlayerController player = attacker.GetComponent<PlayerController>();
             player.circleAttack.transform.localScale -= scaleCharacter;
+
+            // Adjust the camera as the character grows up
+            Camera.main.transform.localScale -= new Vector3(0, 0, scaleCamera);
+
             LevelManager.Instance.IncreaseDiamondsInPlay();
             AudioManager.Instance.PlayKillBotSound();
         }

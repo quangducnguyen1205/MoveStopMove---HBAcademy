@@ -61,7 +61,7 @@ public class Weapon : GameUnit
             return;
         }
         // Kiểm tra nếu vũ khí không va chạm với chính chủ sở hữu của nó
-        Character character = other.GetComponent<Character>();
+        Character character = Cache.GetCharacter(other); // use Cache
         if (character != null && character != owner){
             character.OnDeath(owner);
             OnDespawn();

@@ -160,7 +160,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   poolType: 0
-  attackSpped: 7
+  attackSpped: 5
   timeInvokeOnDespawn: 5
   weaponType: 1
   rb: {fileID: 8115109541882144198}

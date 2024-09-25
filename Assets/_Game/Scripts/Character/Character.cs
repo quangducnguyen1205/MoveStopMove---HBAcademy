@@ -61,7 +61,7 @@ public class Character : GameUnit
     public void FindTargets(){
         Collider[] hitColliders = Physics.OverlapSphere(transform.position, attackRange);
         foreach (Collider hitCollider in hitColliders){
-            Character character = hitCollider.GetComponent<Character>();
+            Character character = Cache.GetCharacter(hitCollider); // use Cache
             if (character != null && character != this && character.gameObject.activeSelf){
                 if (!targetList.Contains(character) && IsTargetInRange(character)){
                     targetList.Add(character);
